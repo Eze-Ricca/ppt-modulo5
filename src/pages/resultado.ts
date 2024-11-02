@@ -1,5 +1,3 @@
-import { state } from "../state";
-
 export function resultadoPage(params: { goTo: (arg: string) => void }) {
   const divEl = document.createElement("div");
   divEl.innerHTML = /*HTML */ `

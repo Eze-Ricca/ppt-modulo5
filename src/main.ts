@@ -3,7 +3,6 @@ import "./components/button/button";
 import "./components/score/score";
 import "./components/text/text";
 import { initRouter } from "./router";
-import { state } from "./state";
 
 let app: HTMLDivElement = document.querySelector("#app")!;
 if (!app) {
