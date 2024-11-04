@@ -1,4 +1,4 @@
-var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configurable:!0,writable:!0,value:o}):t[e]=o;var f=(t,e,o)=>(E(t,typeof e!="symbol"?e+"":e,o),o);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const n of r)if(n.type==="childList")for(const s of n.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&a(s)}).observe(document,{childList:!0,subtree:!0});function o(r){const n={};return r.integrity&&(n.integrity=r.integrity),r.referrerPolicy&&(n.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?n.credentials="include":r.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function a(r){if(r.ep)return;r.ep=!0;const n=o(r);fetch(r.href,n)}})();class v extends HTMLElement{static get style(){return`
+var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configurable:!0,writable:!0,value:o}):t[e]=o;var f=(t,e,o)=>(E(t,typeof e!="symbol"?e+"":e,o),o);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))r(n);new MutationObserver(n=>{for(const a of n)if(a.type==="childList")for(const s of a.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&r(s)}).observe(document,{childList:!0,subtree:!0});function o(n){const a={};return n.integrity&&(a.integrity=n.integrity),n.referrerPolicy&&(a.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?a.credentials="include":n.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function r(n){if(n.ep)return;n.ep=!0;const a=o(n);fetch(n.href,a)}})();class x extends HTMLElement{static get style(){return`
     .container {
         position: relative;
         width: 380px;
@@ -68,13 +68,13 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         background-color: black;
       }   
        `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){if(this.shadowRoot.innerHTML=`
-    <style>${v.style}</style>
+    <style>${x.style}</style>
     <div class="container">
       <div class="estrella"></div>
       <div class="estrella2"></div>
       <h3 class="estrella-text">Ganaste!</h3>
     </div>
-    `,this.hasAttribute("invertida")){const e=this.shadowRoot.querySelector(".estrella"),o=this.shadowRoot.querySelector(".estrella2"),a=this.shadowRoot.querySelector(".estrella-text");e.setAttribute("class","estrella estrella-invertida"),o.setAttribute("class","estrella2 estrella-invertida2"),a.textContent="Perdiste!"}}}customElements.define("estrella-el",v);class x extends HTMLElement{static get style(){return`
+    `,this.hasAttribute("invertida")){const e=this.shadowRoot.querySelector(".estrella"),o=this.shadowRoot.querySelector(".estrella2"),r=this.shadowRoot.querySelector(".estrella-text");e.setAttribute("class","estrella estrella-invertida"),o.setAttribute("class","estrella2 estrella-invertida2"),r.textContent="Perdiste!"}}}customElements.define("estrella-el",x);class b extends HTMLElement{static get style(){return`
     button {
         font-family: var(--fuente-odibee);
         font-size: 3rem;
@@ -93,10 +93,10 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         border: solid 10px var(--color-button);
       }
     `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){const e=this.getAttribute("class");this.shadowRoot.innerHTML=`
-    <style>${x.style}</style>
+    <style>${b.style}</style>
     <button class="${e}"><slot></slot></button>
 
-    `}}customElements.define("button-el",x);class b extends HTMLElement{static get style(){return`
+    `}}customElements.define("button-el",b);class y extends HTMLElement{static get style(){return`
     .container {
         box-sizing: border-box;
         font-family: var(--fuente-odibee);
@@ -133,7 +133,7 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         letter-spacing: 0.5rem;
       }
     `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.shadowRoot.innerHTML=`
-    <style>${b.style}</style>
+    <style>${y.style}</style>
     <div class="container">
       <h3>Score</h3>
       <div class="container-p">
@@ -141,7 +141,7 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         <p class="p-maquina">Maquina: 3</p>
       </div>
     </div>
-    `}}customElements.define("score-el",b);class k extends HTMLElement{constructor(){super();f(this,"tags",["h1","p"]);f(this,"tag","p");this.attachShadow({mode:"open"}),this.tags.includes(this.getAttribute("tag"))&&(this.tag=this.getAttribute("tag")||this.tag),console.log(this.tag),this.render()}static get style(){return""}render(){const o=document.createElement(this.tag);o.textContent=this.textContent,this.shadowRoot.append(o)}}customElements.define("text-el",k);function C(t){const e=document.createElement("div");e.innerHTML=`
+    `}}customElements.define("score-el",y);class k extends HTMLElement{constructor(){super();f(this,"tags",["h1","p"]);f(this,"tag","p");this.attachShadow({mode:"open"}),this.tags.includes(this.getAttribute("tag"))&&(this.tag=this.getAttribute("tag")||this.tag),console.log(this.tag),this.render()}static get style(){return""}render(){const o=document.createElement(this.tag);o.textContent=this.textContent,this.shadowRoot.append(o)}}customElements.define("text-el",k);function C(t){console.log("initHome encontrado");const e=document.createElement("div");e.innerHTML=`
   <style>
   .contenedor{
     display: flex;
@@ -202,7 +202,7 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
   <img src="/tijera.svg" alt="" />
 </div>
 </div>
-  `;const o=e.querySelector("button-el");return console.log(o),o==null||o.addEventListener("click",()=>{t.goTo("/instrucciones")}),e}function T(t){let e=document.createElement("div");e.innerHTML=`
+  `;const o=e.querySelector("button-el");return console.log(o),o==null||o.addEventListener("click",()=>{t.goTo("/instrucciones")}),e}function T(t){console.log("instruccionesPage encontrado");let e=document.createElement("div");e.innerHTML=`
   <style>.container {
   display: flex;
   flex-direction: column;
@@ -253,7 +253,7 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         <img src="/tijera.svg" alt="" />
       </div>
     </div>
-  `;const o=e.querySelector("button-el");return console.log(o),o==null||o.addEventListener("click",()=>{t.goTo("/elige")}),e}const l={data:{currentGame:{myPlay:"",computerPlay:""},scores:{myScore:0,computerScore:0}},listeners:[],init(){const t=localStorage.getItem("saved-state");if(!t)this.setState(this.data);else{const e=JSON.parse(t);this.setState(e)}},getState(){return this.data},setState(t){this.data={...this.data,...t},this.listeners.forEach(e=>e()),localStorage.setItem("saved-state",JSON.stringify(this.data)),console.log("Soy el state, he cambiado",this.data)},subscribe(t){this.listeners.push(t)},setComputerMove(t){const e=this.getState();e.currentGame.computerPlay=t,this.setState(e)},setMove(t){const e=this.getState();e.currentGame.myPlay=t,this.setState(e)},whoWins(t,e){const n=[t==="tijera"&&e==="papel",t==="piedra"&&e==="tijera",t==="papel"&&e==="piedra"].includes(!0);return n?this.data.scores.myScore+=1:!n&&!(t===e)&&(this.data.scores.computerScore+=1),this.setState(this.data),this.data.scores},resetCurrentGame(){this.data.currentGame={myPlay:"",computerPlay:""},this.setState(this.data)}};function L(t){const e=document.createElement("div");e.innerHTML=`
+  `;const o=e.querySelector("button-el");return console.log(o),o==null||o.addEventListener("click",()=>{t.goTo("/elige")}),e}const l={data:{currentGame:{myPlay:"",computerPlay:""},scores:{myScore:0,computerScore:0}},listeners:[],init(){const t=localStorage.getItem("saved-state");if(!t)this.setState(this.data);else{const e=JSON.parse(t);this.setState(e)}},getState(){return this.data},setState(t){this.data={...this.data,...t},this.listeners.forEach(e=>e()),localStorage.setItem("saved-state",JSON.stringify(this.data)),console.log("Soy el state, he cambiado",this.data)},subscribe(t){this.listeners.push(t)},setComputerMove(t){const e=this.getState();e.currentGame.computerPlay=t,this.setState(e)},setMove(t){const e=this.getState();e.currentGame.myPlay=t,this.setState(e)},whoWins(t,e){const a=[t==="tijera"&&e==="papel",t==="piedra"&&e==="tijera",t==="papel"&&e==="piedra"].includes(!0);return a?this.data.scores.myScore+=1:!a&&!(t===e)&&(this.data.scores.computerScore+=1),this.setState(this.data),this.data.scores},resetCurrentGame(){this.data.currentGame={myPlay:"",computerPlay:""},this.setState(this.data)}};function P(t){console.log("eligePage encontrado");const e=document.createElement("div");e.innerHTML=`
     <style>
       /* Estilos como los que tenías anteriormente */
       .principal {
@@ -410,7 +410,7 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
         <img class="imagen-jugador" src="./public/papel.svg" alt="" />
       </div>
     </div>
-  `;const o=e.querySelector(".container-manos button img.piedra"),a=e.querySelector(".container-manos button img.papel"),r=e.querySelector(".container-manos button img.tijera"),n=e.querySelector(".principal");console.log(n);const s=e.querySelector(".secundario");console.log(s);const h=e.querySelector(".imagen-maquina"),c=e.querySelector(".imagen-jugador");console.log(c),l.subscribe(()=>{const i=l.getState(),p=e.querySelector(".my-score span"),u=e.querySelector(".computer-score span");p.textContent=i.scores.myScore.toString(),u.textContent=i.scores.computerScore.toString(),h.src=`./public/${i.currentGame.computerPlay}.svg`,c.src=`./public/${i.currentGame.myPlay}.svg`}),l.init();function d(i){e.querySelectorAll(".general").forEach(m=>{m.disabled=!0,m.style.pointerEvents="none"});const u=g();l.setMove(i),l.setComputerMove(u),l.whoWins(i,u),setTimeout(()=>{l.resetCurrentGame(),location.reload()},5e3)}o.addEventListener("click",()=>d("piedra")),a.addEventListener("click",()=>d("papel")),r.addEventListener("click",()=>d("tijera"));function g(){const i=["piedra","papel","tijera"];return i[Math.floor(Math.random()*i.length)]}function S(){const i=document.querySelector(".inner-box");let p=Number(i.innerText);if(p>-2&&(i.innerText=(p-1).toString()),p<=0){const u=l.getState(),{myScore:m,computerScore:q}=u.scores;s.style.display="flex",n.style.display="none",m==2||q==2?(t.goTo("/resultado"),clearInterval(w)):setTimeout(()=>{location.reload()},5e3)}}const w=setInterval(S,1e3);return e}function M(t){const e=document.createElement("div");return e.innerHTML=`
+  `;const o=e.querySelector(".container-manos button img.piedra"),r=e.querySelector(".container-manos button img.papel"),n=e.querySelector(".container-manos button img.tijera"),a=e.querySelector(".principal");console.log(a);const s=e.querySelector(".secundario");console.log(s);const g=e.querySelector(".imagen-maquina"),c=e.querySelector(".imagen-jugador");console.log(c),l.subscribe(()=>{const i=l.getState(),p=e.querySelector(".my-score span"),u=e.querySelector(".computer-score span");p.textContent=i.scores.myScore.toString(),u.textContent=i.scores.computerScore.toString(),g.src=`./public/${i.currentGame.computerPlay}.svg`,c.src=`./public/${i.currentGame.myPlay}.svg`}),l.init();function d(i){e.querySelectorAll(".general").forEach(h=>{h.disabled=!0,h.style.pointerEvents="none"});const u=m();l.setMove(i),l.setComputerMove(u),l.whoWins(i,u),setTimeout(()=>{l.resetCurrentGame(),location.reload()},5e3)}o.addEventListener("click",()=>d("piedra")),r.addEventListener("click",()=>d("papel")),n.addEventListener("click",()=>d("tijera"));function m(){const i=["piedra","papel","tijera"];return i[Math.floor(Math.random()*i.length)]}function S(){const i=document.querySelector(".inner-box");let p=Number(i.innerText);if(p>-2&&(i.innerText=(p-1).toString()),p<=0){const u=l.getState(),{myScore:h,computerScore:q}=u.scores;s.style.display="flex",a.style.display="none",h==2||q==2?(t.goTo("/resultado"),clearInterval(w)):setTimeout(()=>{location.reload()},5e3)}}const w=setInterval(S,1e3);return e}function L(t){console.log("resultadoPage encontrado");const e=document.createElement("div");return e.innerHTML=`
   <style>.ganaste {
   /* display: none; */
   height: 100vh;
@@ -530,4 +530,4 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
 
   
 </div>
-  `,document.addEventListener("DOMContentLoaded",function(){const o=e.querySelectorAll("button-el");o[0].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[1].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")}),o[2].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[3].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")});let a=localStorage.getItem("saved-state").toString();const r=e.querySelector(".p-persona");r.textContent=`Vos: ${JSON.parse(a).scores.myScore}`;const n=e.querySelector(".p-maquina");n.textContent=`Maquina: ${JSON.parse(a).scores.computerScore}`;const s=e.querySelector(".parrafo-persona");s.textContent=`Vos: ${JSON.parse(a).scores.myScore}`;const h=e.querySelector(".parrafo-maquina");h.textContent=`Maquina: ${JSON.parse(a).scores.computerScore}`;let c;JSON.parse(a).scores.computerScore>JSON.parse(a).scores.myScore?c=!1:c=!0;const d=document.querySelector(".ganaste"),g=document.querySelector(".perdiste");c?(d.style.display="flex",g.style.display="none"):(d.style.display="none",g.style.display="flex")}),e}const P=[{path:/\/home/,component:C},{path:/\/instrucciones/,component:T},{path:/\/elige/,component:L},{path:/\/resultado/,component:M}];function z(t){function e(a){a==="/"&&o("/home"),P.forEach(r=>{if(r.path.test(a)){const n=r.component({goTo:o});t.innerHTML="",t.appendChild(n)}})}function o(a){history.pushState({},"",a),e(a)}e(location.pathname),window.addEventListener("popstate",()=>{e(location.pathname)})}let y=document.querySelector("#app");if(!y)throw new Error("Elemento #app no encontrado");z(y);
+  `,document.addEventListener("DOMContentLoaded",function(){const o=e.querySelectorAll("button-el");o[0].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[1].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")}),o[2].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[3].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")});let r=localStorage.getItem("saved-state").toString();const n=e.querySelector(".p-persona");n.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const a=e.querySelector(".p-maquina");a.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;const s=e.querySelector(".parrafo-persona");s.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const g=e.querySelector(".parrafo-maquina");g.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;let c;JSON.parse(r).scores.computerScore>JSON.parse(r).scores.myScore?c=!1:c=!0;const d=document.querySelector(".ganaste"),m=document.querySelector(".perdiste");c?(d.style.display="flex",m.style.display="none"):(d.style.display="none",m.style.display="flex")}),e}const M=[{path:/\/home/,component:C},{path:/\/instrucciones/,component:T},{path:/\/elige/,component:P},{path:/\/resultado/,component:L}];function v(){return location.host.includes("github.io")}function z(t){const e=v()?"/ppt-modulo5":"/";function o(n){const a=v()?e+n:n;console.log("navegando a la ruta:",a),history.pushState({},"",a),r(a)}function r(n){const a=v()?n.replace(e,""):n;console.log("manejando la ruta:",a),n==="/"&&o("/home"),M.forEach(s=>{if(s.path.test(a)){console.log("ruta encontrada: ",a);const g=s.component({goTo:o});t.innerHTML="",t.appendChild(g)}})}location.pathname.replace(/\/$/,"")==e?o("/welcome"):r(location.pathname),window.addEventListener("popstate",()=>{r(location.pathname)})}console.log("cargo main.ts");(function(){console.log("arranco la funcion main");let e=document.querySelector("#app");if(!e)throw new Error("Elemento #app no encontrado");z(e),console.log("termino la funcion main")})();
