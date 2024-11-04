@@ -70,6 +70,7 @@ export function initRouter(rootEl: Element): void {
     handlerRoute(location.pathname);
     console.log(location.pathname, "en la linea 71");
   }
+
   //Escucha el evento popstate para actualizar la vista cuando se navega para adelante o para atras
   window.addEventListener("popstate", () => {
     handlerRoute(location.pathname);

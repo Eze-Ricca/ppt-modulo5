@@ -142,7 +142,7 @@ export function resultadoPage(params: { goTo: (arg: string) => void }) {
     });
 
     // localStorage.removeItem("saved-state");
-    let newCurrentState = localStorage.getItem("saved-state")!.toString();
+    let newCurrentState = localStorage.getItem("saved-state")!;
     const pPersona = divEl.querySelector(".p-persona")!;
     pPersona.textContent = `Vos: ${JSON.parse(newCurrentState).scores.myScore}`;
 

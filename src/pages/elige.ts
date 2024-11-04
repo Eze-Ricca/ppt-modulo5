@@ -139,13 +139,13 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
       <h3 class="elige">Elige tu jugada antes de que se termina el tiempo!</h3>
       <div class="container-manos">
         <button class="general">
-          <img class="piedra" src="./public/piedra.svg" alt="" />
+          <img class="piedra" src="piedra.svg" alt="" />
         </button>
         <button class="general">
-          <img class="papel" src="./public/papel.svg" alt="" />
+          <img class="papel" src="papel.svg" alt="" />
         </button>
         <button class="general">
-          <img class="tijera" src="./public/tijera.svg" alt="" />
+          <img class="tijera" src="tijera.svg" alt="" />
         </button>
       </div>
       <div class="my-score">Jugador: <span>0</span></div>
@@ -153,11 +153,11 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     </div>
     <div class="secundario">
       <div class="div-img-maquina">
-        <img class="imagen-maquina" src="./public/papel.svg" alt="" />
+        <img class="imagen-maquina" src="papel.svg" alt="" />
       </div>
       
       <div class="div-img-jugador">
-        <img class="imagen-jugador" src="./public/papel.svg" alt="" />
+        <img class="imagen-jugador" src="papel.svg" alt="" />
       </div>
     </div>
   `;

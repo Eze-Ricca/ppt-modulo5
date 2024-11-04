@@ -1,6 +1,7 @@
 {
   "name": "piedra-papel-tijera",
   "private": true,
+  "homepage": "https://eze-ricca.github.io/ppt-modulo5",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
