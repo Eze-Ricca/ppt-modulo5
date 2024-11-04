@@ -260,7 +260,7 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
         clearInterval(intervalo); // Detener el intervalo
       } else {
         setTimeout(() => {
-          location.reload(); // Reiniciar la pantalla
+          // location.reload(); // Reiniciar la pantalla
         }, 5000);
       }
     }
