@@ -64,12 +64,13 @@ export function initRouter(rootEl: Element): void {
   }
 
   if (location.pathname.replace(/\/$/, "") == BASE_PATH) {
-    goTo("/welcome");
+    goTo("/home");
   } else {
     //Ejecuta el handlerRoute con la ruta tomada de la url
     handlerRoute(location.pathname);
+    console.log(location.pathname, "en la linea 71");
   }
-  //Escucha el evento popstate para actualizar la visata cuando se navega para adelante o para atras
+  //Escucha el evento popstate para actualizar la vista cuando se navega para adelante o para atras
   window.addEventListener("popstate", () => {
     handlerRoute(location.pathname);
   });
