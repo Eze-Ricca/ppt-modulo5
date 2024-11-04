@@ -197,9 +197,9 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
 <button-el>Empezar!</button-el>
 </div>
 <div class="container-manos">
-  <img src="/papel.svg" alt="" />
-  <img src="/piedra.svg" alt="" />
-  <img src="/tijera.svg" alt="" />
+  <img src="/ppt-modulo5/papel.svg" alt="" />
+  <img src="piedra.svg" alt="" />
+  <img src="tijera.svg" alt="" />
 </div>
 </div>
   `;const o=e.querySelector("button-el");return console.log(o),o==null||o.addEventListener("click",()=>{t.goTo("/instrucciones")}),e}function T(t){console.log("instruccionesPage encontrado");let e=document.createElement("div");e.innerHTML=`
@@ -389,13 +389,13 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
       <h3 class="elige">Elige tu jugada antes de que se termina el tiempo!</h3>
       <div class="container-manos">
         <button class="general">
-          <img class="piedra" src="./public/piedra.svg" alt="" />
+          <img class="piedra" src="piedra.svg" alt="" />
         </button>
         <button class="general">
-          <img class="papel" src="./public/papel.svg" alt="" />
+          <img class="papel" src="papel.svg" alt="" />
         </button>
         <button class="general">
-          <img class="tijera" src="./public/tijera.svg" alt="" />
+          <img class="tijera" src="tijera.svg" alt="" />
         </button>
       </div>
       <div class="my-score">Jugador: <span>0</span></div>
@@ -403,14 +403,14 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
     </div>
     <div class="secundario">
       <div class="div-img-maquina">
-        <img class="imagen-maquina" src="./public/papel.svg" alt="" />
+        <img class="imagen-maquina" src="papel.svg" alt="" />
       </div>
       
       <div class="div-img-jugador">
-        <img class="imagen-jugador" src="./public/papel.svg" alt="" />
+        <img class="imagen-jugador" src="papel.svg" alt="" />
       </div>
     </div>
-  `;const o=e.querySelector(".container-manos button img.piedra"),r=e.querySelector(".container-manos button img.papel"),n=e.querySelector(".container-manos button img.tijera"),a=e.querySelector(".principal");console.log(a);const s=e.querySelector(".secundario");console.log(s);const g=e.querySelector(".imagen-maquina"),c=e.querySelector(".imagen-jugador");console.log(c),l.subscribe(()=>{const i=l.getState(),p=e.querySelector(".my-score span"),u=e.querySelector(".computer-score span");p.textContent=i.scores.myScore.toString(),u.textContent=i.scores.computerScore.toString(),g.src=`./public/${i.currentGame.computerPlay}.svg`,c.src=`./public/${i.currentGame.myPlay}.svg`}),l.init();function d(i){e.querySelectorAll(".general").forEach(h=>{h.disabled=!0,h.style.pointerEvents="none"});const u=m();l.setMove(i),l.setComputerMove(u),l.whoWins(i,u),setTimeout(()=>{l.resetCurrentGame(),location.reload()},5e3)}o.addEventListener("click",()=>d("piedra")),r.addEventListener("click",()=>d("papel")),n.addEventListener("click",()=>d("tijera"));function m(){const i=["piedra","papel","tijera"];return i[Math.floor(Math.random()*i.length)]}function S(){const i=document.querySelector(".inner-box");let p=Number(i.innerText);if(p>-2&&(i.innerText=(p-1).toString()),p<=0){const u=l.getState(),{myScore:h,computerScore:q}=u.scores;s.style.display="flex",a.style.display="none",h==2||q==2?(t.goTo("/resultado"),clearInterval(w)):setTimeout(()=>{location.reload()},5e3)}}const w=setInterval(S,1e3);return e}function L(t){console.log("resultadoPage encontrado");const e=document.createElement("div");return e.innerHTML=`
+  `;const o=e.querySelector(".container-manos button img.piedra"),r=e.querySelector(".container-manos button img.papel"),n=e.querySelector(".container-manos button img.tijera"),a=e.querySelector(".principal");console.log(a);const s=e.querySelector(".secundario");console.log(s);const g=e.querySelector(".imagen-maquina"),c=e.querySelector(".imagen-jugador");console.log(c),l.subscribe(()=>{const i=l.getState(),p=e.querySelector(".my-score span"),u=e.querySelector(".computer-score span");p.textContent=i.scores.myScore.toString(),u.textContent=i.scores.computerScore.toString(),g.src=`./public/${i.currentGame.computerPlay}.svg`,c.src=`./public/${i.currentGame.myPlay}.svg`}),l.init();function d(i){e.querySelectorAll(".general").forEach(h=>{h.disabled=!0,h.style.pointerEvents="none"});const u=m();l.setMove(i),l.setComputerMove(u),l.whoWins(i,u),setTimeout(()=>{l.resetCurrentGame(),location.reload()},5e3)}o.addEventListener("click",()=>d("piedra")),r.addEventListener("click",()=>d("papel")),n.addEventListener("click",()=>d("tijera"));function m(){const i=["piedra","papel","tijera"];return i[Math.floor(Math.random()*i.length)]}function S(){const i=document.querySelector(".inner-box");let p=Number(i.innerText);if(p>-2&&(i.innerText=(p-1).toString()),p<=0){const u=l.getState(),{myScore:h,computerScore:q}=u.scores;s.style.display="flex",a.style.display="none",h==2||q==2?(t.goTo("/resultado"),clearInterval(w)):setTimeout(()=>{},5e3)}}const w=setInterval(S,1e3);return e}function L(t){console.log("resultadoPage encontrado");const e=document.createElement("div");return e.innerHTML=`
   <style>.ganaste {
   /* display: none; */
   height: 100vh;
@@ -530,4 +530,4 @@ var j=Object.defineProperty;var E=(t,e,o)=>e in t?j(t,e,{enumerable:!0,configura
 
   
 </div>
-  `,document.addEventListener("DOMContentLoaded",function(){const o=e.querySelectorAll("button-el");o[0].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[1].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")}),o[2].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[3].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")});let r=localStorage.getItem("saved-state").toString();const n=e.querySelector(".p-persona");n.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const a=e.querySelector(".p-maquina");a.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;const s=e.querySelector(".parrafo-persona");s.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const g=e.querySelector(".parrafo-maquina");g.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;let c;JSON.parse(r).scores.computerScore>JSON.parse(r).scores.myScore?c=!1:c=!0;const d=document.querySelector(".ganaste"),m=document.querySelector(".perdiste");c?(d.style.display="flex",m.style.display="none"):(d.style.display="none",m.style.display="flex")}),e}const M=[{path:/\/home/,component:C},{path:/\/instrucciones/,component:T},{path:/\/elige/,component:P},{path:/\/resultado/,component:L}];function v(){return location.host.includes("github.io")}function z(t){const e=v()?"/ppt-modulo5":"/";function o(n){const a=v()?e+n:n;console.log("navegando a la ruta:",a),history.pushState({},"",a),r(a)}function r(n){const a=v()?n.replace(e,""):n;console.log("manejando la ruta:",a),n==="/"&&o("/home"),M.forEach(s=>{if(s.path.test(a)){console.log("ruta encontrada: ",a);const g=s.component({goTo:o});t.innerHTML="",t.appendChild(g)}})}location.pathname.replace(/\/$/,"")==e?o("/home"):(r(location.pathname),console.log(location.pathname,"en la linea 71")),window.addEventListener("popstate",()=>{r(location.pathname)})}console.log("cargo main.ts");(function(){console.log("arranco la funcion main");let e=document.querySelector("#app");if(!e)throw new Error("Elemento #app no encontrado");z(e),console.log("termino la funcion main")})();
+  `,document.addEventListener("DOMContentLoaded",function(){const o=e.querySelectorAll("button-el");o[0].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[1].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")}),o[2].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/elige")}),o[3].addEventListener("click",()=>{localStorage.removeItem("saved-state"),t.goTo("/home")});let r=localStorage.getItem("saved-state");const n=e.querySelector(".p-persona");n.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const a=e.querySelector(".p-maquina");a.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;const s=e.querySelector(".parrafo-persona");s.textContent=`Vos: ${JSON.parse(r).scores.myScore}`;const g=e.querySelector(".parrafo-maquina");g.textContent=`Maquina: ${JSON.parse(r).scores.computerScore}`;let c;JSON.parse(r).scores.computerScore>JSON.parse(r).scores.myScore?c=!1:c=!0;const d=document.querySelector(".ganaste"),m=document.querySelector(".perdiste");c?(d.style.display="flex",m.style.display="none"):(d.style.display="none",m.style.display="flex")}),e}const M=[{path:/\/home/,component:C},{path:/\/instrucciones/,component:T},{path:/\/elige/,component:P},{path:/\/resultado/,component:L}];function v(){return location.host.includes("github.io")}function z(t){const e=v()?"/ppt-modulo5":"/";function o(n){const a=v()?e+n:n;console.log("navegando a la ruta:",a),history.pushState({},"",a),r(a)}function r(n){const a=v()?n.replace(e,""):n;console.log("manejando la ruta:",a),n==="/"&&o("/home"),M.forEach(s=>{if(s.path.test(a)){console.log("ruta encontrada: ",a);const g=s.component({goTo:o});t.innerHTML="",t.appendChild(g)}})}location.pathname.replace(/\/$/,"")==e?o("/home"):(r(location.pathname),console.log(location.pathname,"en la linea 71")),window.addEventListener("popstate",()=>{r(location.pathname)})}console.log("cargo main.ts");(function(){console.log("arranco la funcion main");let e=document.querySelector("#app");if(!e)throw new Error("Elemento #app no encontrado");z(e),console.log("termino la funcion main")})();
