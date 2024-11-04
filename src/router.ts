@@ -29,14 +29,33 @@ const routes: Route[] = [
   },
 ];
 
+//CODIGO DE PRUEBA
+function isGithubPages() {
+  return location.host.includes("github.io");
+}
+//---------------------------------
 export function initRouter(rootEl: Element): void {
-  function router(route: string): void {
+  // PRUEBA
+  const BASE_PATH = isGithubPages() ? "/ppt-modulo5" : "/";
+  // Funcion utilitaria que pasa a la vista seleccionada para poder navegar a otras rutas
+  function goTo(path: string): void {
+    const completePath = isGithubPages() ? BASE_PATH + path : path;
+    console.log("navegando a la ruta:", completePath);
+    history.pushState({}, "", completePath);
+    handlerRoute(completePath);
+  }
+  // -----------------------------
+  function handlerRoute(route: string): void {
+    const newRoute = isGithubPages() ? route.replace(BASE_PATH, "") : route;
+    console.log("manejando la ruta:", newRoute);
     if (route === "/") {
       goTo("/home");
     }
+
     routes.forEach((r: Route) => {
       //Busca la ruta que coincida con el path
-      if (r.path.test(route)) {
+      if (r.path.test(newRoute)) {
+        console.log("ruta encontrada: ", newRoute);
         const viewEl = r.component({ goTo: goTo }); //Genera la vista desde el componente
         rootEl.innerHTML = ""; // Limpia el HTML
         rootEl.appendChild(viewEl);
@@ -44,17 +63,14 @@ export function initRouter(rootEl: Element): void {
     });
   }
 
-  // Funcion utilitaria que pasa a la vista seleccionada para poder navegar a otras rutas
-  function goTo(uri: string): void {
-    history.pushState({}, "", uri);
-    router(uri);
+  if (location.pathname.replace(/\/$/, "") == BASE_PATH) {
+    goTo("/welcome");
+  } else {
+    //Ejecuta el handlerRoute con la ruta tomada de la url
+    handlerRoute(location.pathname);
   }
-
-  //Ejecuta el router con la ruta tomada de la url
-  router(location.pathname);
-
   //Escucha el evento popstate para actualizar la visata cuando se navega para adelante o para atras
   window.addEventListener("popstate", () => {
-    router(location.pathname);
+    handlerRoute(location.pathname);
   });
 }

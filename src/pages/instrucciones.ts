@@ -1,4 +1,5 @@
 export function instruccionesPage(params: { goTo: (arg: string) => void }) {
+  console.log("instruccionesPage encontrado");
   let div = document.createElement("div");
   div.innerHTML = /*html*/ `
   <style>.container {

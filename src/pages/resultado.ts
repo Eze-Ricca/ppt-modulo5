@@ -1,4 +1,5 @@
 export function resultadoPage(params: { goTo: (arg: string) => void }) {
+  console.log("resultadoPage encontrado");
   const divEl = document.createElement("div");
   divEl.innerHTML = /*HTML */ `
   <style>.ganaste {

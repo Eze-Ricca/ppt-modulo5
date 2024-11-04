@@ -1,6 +1,7 @@
 import { state, Jugada } from "../state";
 
 export function eligePage(params: { goTo: (arg: string) => void }) {
+  console.log("eligePage encontrado");
   const divEl: HTMLDivElement = document.createElement("div");
   divEl.innerHTML = /*HTML */ `
     <style>
