@@ -222,7 +222,16 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     // Reinicia la pantalla después de 1 segundo para una nueva ronda
     setTimeout(() => {
       state.resetCurrentGame();
-      location.reload();
+      const currentState = state.getState(); // Obtener el estado actual
+
+      if (
+        currentState.scores.computerScore == 2 ||
+        currentState.scores.myScore == 2
+      ) {
+        params.goTo("/resultado");
+      } else {
+        params.goTo("/elige");
+      }
     }, 5000);
   }
 
@@ -249,20 +258,12 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     }
 
     if (valorActual <= 0) {
-      const currentState = state.getState(); // Obtener el estado actual
-      const { myScore, computerScore } = currentState.scores;
-
       divSecundario.style.display = "flex";
       divPrincipal.style.display = "none";
-
-      if (myScore == 2 || computerScore == 2) {
-        params.goTo("/resultado"); // Redirigir a resultados
-        clearInterval(intervalo); // Detener el intervalo
-      } else {
-        setTimeout(() => {
-          // location.reload(); // Reiniciar la pantalla
-        }, 5000);
-      }
+      clearInterval(intervalo); // Detener el intervalo
+    }
+    if (valorActual == 2) {
+      console.log("antes del intervalo debe aparecer esto primero");
     }
   }
 
