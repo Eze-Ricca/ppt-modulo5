@@ -213,11 +213,11 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
 }
 .div-text {
   width: 317px;
-  height: 480px;
+  height: 380px;
 }
 .div-text-p {
   font-family: var(--fuente-odibee);
-  font-size: 3rem;
+  font-size: 2.7rem;
   letter-spacing: 0.11rem;
   font-weight: 800;
   text-align: center;
