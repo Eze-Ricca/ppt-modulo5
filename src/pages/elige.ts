@@ -194,9 +194,7 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
 
     // Muestra el movimiento de la computadora en pantalla
     imagenPc.src = `/ppt-modulo5/${currentState.currentGame.computerPlay}.svg`;
-    console.log(imagenPc.src);
     imagenJugador.src = `/ppt-modulo5/${currentState.currentGame.myPlay}.svg`;
-    console.log(imagenJugador.src);
   });
 
   // Carga el estado inicial de la partida
