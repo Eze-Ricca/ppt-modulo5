@@ -1,7 +1,6 @@
 import { state, Jugada } from "../state";
 
 export function eligePage(params: { goTo: (arg: string) => void }) {
-  console.log("eligePage encontrado");
   const divEl: HTMLDivElement = document.createElement("div");
   divEl.innerHTML = /*HTML */ `
     <style>
@@ -175,15 +174,13 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
   )!;
 
   const divPrincipal: HTMLElement = divEl.querySelector(".principal")!;
-  console.log(divPrincipal);
+
   const divSecundario: HTMLElement = divEl.querySelector(".secundario")!;
-  console.log(divSecundario);
+
   const imagenPc: HTMLImageElement = divEl.querySelector(".imagen-maquina")!;
 
   const imagenJugador: HTMLImageElement =
     divEl.querySelector(".imagen-jugador")!;
-  console.log(imagenJugador);
-
   // Suscríbete en el 'state' para actualizar el DOM cuando cambie
   state.subscribe(() => {
     const currentState = state.getState();
@@ -191,12 +188,15 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     // Actualiza el puntaje en el DOM
     const myScoreEl = divEl.querySelector(".my-score span")!;
     const computerScoreEl = divEl.querySelector(".computer-score span")!;
+
     myScoreEl.textContent = currentState.scores.myScore.toString();
     computerScoreEl.textContent = currentState.scores.computerScore.toString();
 
     // Muestra el movimiento de la computadora en pantalla
-    imagenPc.src = `/ppt-modulo5/public/${currentState.currentGame.computerPlay}.svg`;
-    imagenJugador.src = `/ppt-modulo5/public/${currentState.currentGame.myPlay}.svg`;
+    imagenPc.src = `/ppt-modulo5/${currentState.currentGame.computerPlay}.svg`;
+    console.log(imagenPc.src);
+    imagenJugador.src = `/ppt-modulo5/${currentState.currentGame.myPlay}.svg`;
+    console.log(imagenJugador.src);
   });
 
   // Carga el estado inicial de la partida
@@ -213,6 +213,7 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     });
 
     // Establece la jugada del usuario y la computadora
+
     state.setMove(jugada);
     const computerMove = getRandomImage();
     state.setComputerMove(computerMove);

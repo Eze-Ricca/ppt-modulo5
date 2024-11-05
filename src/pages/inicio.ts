@@ -1,6 +1,5 @@
 import "../components/button/button";
 export function initHome(params: { goTo: (arg: string) => void }) {
-  console.log("initHome encontrado");
   const div: HTMLDivElement = document.createElement("div");
   div.innerHTML = /*HTML*/ `
   <style>
@@ -65,7 +64,7 @@ export function initHome(params: { goTo: (arg: string) => void }) {
 </div>
   `;
   const buttonEl = div.querySelector("button-el");
-  console.log(buttonEl);
+
   buttonEl?.addEventListener("click", () => {
     params.goTo("/instrucciones");
   });

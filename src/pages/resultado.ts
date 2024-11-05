@@ -1,5 +1,4 @@
 export function resultadoPage(params: { goTo: (arg: string) => void }) {
-  console.log("resultadoPage encontrado");
   const divEl = document.createElement("div");
   divEl.innerHTML = /*HTML */ `
   <style>.ganaste {
@@ -124,32 +123,14 @@ export function resultadoPage(params: { goTo: (arg: string) => void }) {
 </div>
   `;
 
-  console.log("Pages cargada correctamente");
-  // const volverAJugar = divEl.querySelectorAll("button-el");
-  // volverAJugar[0].addEventListener("click", () => {
-  //   localStorage.removeItem("saved-state");
-  //   params.goTo("/elige");
-  // });
-  // volverAJugar[1].addEventListener("click", () => {
-  //   localStorage.removeItem("saved-state");
-  //   params.goTo("/home");
-  // });
-  // volverAJugar[2].addEventListener("click", () => {
-  //   localStorage.removeItem("saved-state");
-  //   params.goTo("/elige");
-  // });
-  // volverAJugar[3].addEventListener("click", () => {
-  //   localStorage.removeItem("saved-state");
-  //   params.goTo("/home");
-  // });
   const volverAlInicio = divEl.querySelector("button-el")!;
-  console.log(volverAlInicio);
+
   volverAlInicio.addEventListener("click", () => {
     params.goTo("/home");
     // localStorage.removeItem("saved-state");
   });
   const volverAlInicioDos = divEl.querySelector(".volver-jugar")!;
-  console.log(volverAlInicioDos);
+
   volverAlInicioDos.addEventListener("click", () => {
     params.goTo("/home");
     // localStorage.removeItem("saved-state");
