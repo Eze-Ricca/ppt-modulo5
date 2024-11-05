@@ -59,6 +59,7 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
         text-align: center;
         margin: 0;
       }
+      .my-score, .computer-score {font-family: var(--fuente-odibee);}
       .container-manos {
         position: fixed;
         bottom: -80px;
@@ -139,13 +140,13 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
       <h3 class="elige">Elige tu jugada antes de que se termina el tiempo!</h3>
       <div class="container-manos">
         <button class="general">
-          <img class="piedra" src="piedra.svg" alt="" />
+          <img class="piedra" src="/ppt-modulo5/piedra.svg" alt="" />
         </button>
         <button class="general">
-          <img class="papel" src="papel.svg" alt="" />
+          <img class="papel" src="/ppt-modulo5/papel.svg" alt="" />
         </button>
         <button class="general">
-          <img class="tijera" src="tijera.svg" alt="" />
+          <img class="tijera" src="/ppt-modulo5/tijera.svg" alt="" />
         </button>
       </div>
       <div class="my-score">Jugador: <span>0</span></div>
@@ -153,11 +154,11 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     </div>
     <div class="secundario">
       <div class="div-img-maquina">
-        <img class="imagen-maquina" src="papel.svg" alt="" />
+        <img class="imagen-maquina" src="/ppt-modulo5/papel.svg" alt="" />
       </div>
       
       <div class="div-img-jugador">
-        <img class="imagen-jugador" src="papel.svg" alt="" />
+        <img class="imagen-jugador" src="/ppt-modulo5/papel.svg" alt="" />
       </div>
     </div>
   `;
@@ -194,8 +195,8 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     computerScoreEl.textContent = currentState.scores.computerScore.toString();
 
     // Muestra el movimiento de la computadora en pantalla
-    imagenPc.src = `./public/${currentState.currentGame.computerPlay}.svg`;
-    imagenJugador.src = `./public/${currentState.currentGame.myPlay}.svg`;
+    imagenPc.src = `/ppt-modulo5/public/${currentState.currentGame.computerPlay}.svg`;
+    imagenJugador.src = `/ppt-modulo5/public/${currentState.currentGame.myPlay}.svg`;
   });
 
   // Carga el estado inicial de la partida
@@ -212,8 +213,8 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     });
 
     // Establece la jugada del usuario y la computadora
-    const computerMove = getRandomImage();
     state.setMove(jugada);
+    const computerMove = getRandomImage();
     state.setComputerMove(computerMove);
 
     // Calcula y actualiza el resultado
@@ -223,7 +224,6 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
     setTimeout(() => {
       state.resetCurrentGame();
       const currentState = state.getState(); // Obtener el estado actual
-
       if (
         currentState.scores.computerScore == 2 ||
         currentState.scores.myScore == 2
@@ -261,9 +261,6 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
       divSecundario.style.display = "flex";
       divPrincipal.style.display = "none";
       clearInterval(intervalo); // Detener el intervalo
-    }
-    if (valorActual == 2) {
-      console.log("antes del intervalo debe aparecer esto primero");
     }
   }
 

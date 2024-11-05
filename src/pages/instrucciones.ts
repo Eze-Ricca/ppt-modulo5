@@ -1,3 +1,5 @@
+import { state } from "../state";
+
 export function instruccionesPage(params: { goTo: (arg: string) => void }) {
   console.log("instruccionesPage encontrado");
   let div = document.createElement("div");
@@ -47,14 +49,18 @@ export function instruccionesPage(params: { goTo: (arg: string) => void }) {
         <button-el>Jugar!</button-el>
       </div>
       <div class="container-manos">
-        <img src="/papel.svg" alt="" />
-        <img src="/piedra.svg" alt="" />
-        <img src="/tijera.svg" alt="" />
+        <img src="/ppt-modulo5/papel.svg" alt="" />
+        <img src="/ppt-modulo5/piedra.svg" alt="" />
+        <img src="/ppt-modulo5/tijera.svg" alt="" />
       </div>
     </div>
   `;
   const buttonEl = div.querySelector("button-el");
   console.log(buttonEl);
+  state.data.scores.computerScore = 0;
+  state.data.scores.myScore = 0;
+
+  localStorage.removeItem("saved-state");
   buttonEl?.addEventListener("click", () => {
     params.goTo("/elige");
   });

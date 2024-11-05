@@ -59,8 +59,8 @@ export function initHome(params: { goTo: (arg: string) => void }) {
 </div>
 <div class="container-manos">
   <img src="/ppt-modulo5/papel.svg" alt="" />
-  <img src="piedra.svg" alt="" />
-  <img src="tijera.svg" alt="" />
+  <img src="/ppt-modulo5/piedra.svg" alt="" />
+  <img src="/ppt-modulo5/tijera.svg" alt="" />
 </div>
 </div>
   `;

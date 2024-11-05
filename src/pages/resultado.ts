@@ -103,8 +103,9 @@ export function resultadoPage(params: { goTo: (arg: string) => void }) {
       <p class="p-maquina">Maquina: 3</p>
     </div>
   </div>
-  <button-el>Volver a Jugar!</button-el>
-  <button-el>Ir al Inicio!</button-el>
+   <button-el>Volver a Jugar!</button-el>  
+   <!--   <button-el>Ir al Inicio!</button-el>
+  -->
   </div>
   <!--  -->
   <div class="perdiste">
@@ -117,74 +118,84 @@ export function resultadoPage(params: { goTo: (arg: string) => void }) {
     </div>
     </div>
     <button-el class="volver-jugar">Volver a Jugar!</button-el>
-    <button-el>Ir al Inicio!</button-el>
+    <!-- <button-el>Ir al Inicio!</button-el>  -->
 
   
 </div>
   `;
-  document.addEventListener("DOMContentLoaded", function () {
-    const volverAJugar = divEl.querySelectorAll("button-el");
-    volverAJugar[0].addEventListener("click", () => {
-      localStorage.removeItem("saved-state");
-      params.goTo("/elige");
-    });
-    volverAJugar[1].addEventListener("click", () => {
-      localStorage.removeItem("saved-state");
-      params.goTo("/home");
-    });
-    volverAJugar[2].addEventListener("click", () => {
-      localStorage.removeItem("saved-state");
-      params.goTo("/elige");
-    });
-    volverAJugar[3].addEventListener("click", () => {
-      localStorage.removeItem("saved-state");
-      params.goTo("/home");
-    });
 
+  console.log("Pages cargada correctamente");
+  // const volverAJugar = divEl.querySelectorAll("button-el");
+  // volverAJugar[0].addEventListener("click", () => {
+  //   localStorage.removeItem("saved-state");
+  //   params.goTo("/elige");
+  // });
+  // volverAJugar[1].addEventListener("click", () => {
+  //   localStorage.removeItem("saved-state");
+  //   params.goTo("/home");
+  // });
+  // volverAJugar[2].addEventListener("click", () => {
+  //   localStorage.removeItem("saved-state");
+  //   params.goTo("/elige");
+  // });
+  // volverAJugar[3].addEventListener("click", () => {
+  //   localStorage.removeItem("saved-state");
+  //   params.goTo("/home");
+  // });
+  const volverAlInicio = divEl.querySelector("button-el")!;
+  console.log(volverAlInicio);
+  volverAlInicio.addEventListener("click", () => {
+    params.goTo("/home");
     // localStorage.removeItem("saved-state");
-    let newCurrentState = localStorage.getItem("saved-state")!;
-    const pPersona = divEl.querySelector(".p-persona")!;
-    pPersona.textContent = `Vos: ${JSON.parse(newCurrentState).scores.myScore}`;
-
-    const pMaquina = divEl.querySelector(".p-maquina")!;
-    pMaquina.textContent = `Maquina: ${
-      JSON.parse(newCurrentState).scores.computerScore
-    }`;
-
-    const parrafoPersona = divEl.querySelector(".parrafo-persona")!;
-    parrafoPersona.textContent = `Vos: ${
-      JSON.parse(newCurrentState).scores.myScore
-    }`;
-    const parrafoMaquina = divEl.querySelector(".parrafo-maquina")!;
-    parrafoMaquina.textContent = `Maquina: ${
-      JSON.parse(newCurrentState).scores.computerScore
-    }`;
-
-    // Suponiendo que tienes una variable que indica si el jugador ganó o perdió
-    let juegoGanado;
-
-    if (
-      JSON.parse(newCurrentState).scores.computerScore >
-      JSON.parse(newCurrentState).scores.myScore
-    ) {
-      juegoGanado = false;
-    } else {
-      juegoGanado = true;
-    }
-
-    const mostrarDivGanaste: HTMLDivElement =
-      document.querySelector(".ganaste")!;
-    const mostrarDivPerdiste: HTMLDivElement =
-      document.querySelector(".perdiste")!;
-
-    if (juegoGanado) {
-      mostrarDivGanaste!.style.display = "flex"; // Muestra el div de ganaste
-      mostrarDivPerdiste!.style.display = "none"; // Oculta el div de perdido
-    } else {
-      mostrarDivGanaste!.style.display = "none"; // Oculta el div de ganado
-      mostrarDivPerdiste!.style.display = "flex"; // Muestra el div de perdido
-    }
   });
+  const volverAlInicioDos = divEl.querySelector(".volver-jugar")!;
+  console.log(volverAlInicioDos);
+  volverAlInicioDos.addEventListener("click", () => {
+    params.goTo("/home");
+    // localStorage.removeItem("saved-state");
+  });
+
+  // localStorage.removeItem("saved-state");
+  let newCurrentState = localStorage.getItem("saved-state")!;
+  const pPersona = divEl.querySelector(".p-persona")!;
+  pPersona.textContent = `Vos: ${JSON.parse(newCurrentState).scores.myScore}`;
+
+  const pMaquina = divEl.querySelector(".p-maquina")!;
+  pMaquina.textContent = `Maquina: ${
+    JSON.parse(newCurrentState).scores.computerScore
+  }`;
+
+  const parrafoPersona = divEl.querySelector(".parrafo-persona")!;
+  parrafoPersona.textContent = `Vos: ${
+    JSON.parse(newCurrentState).scores.myScore
+  }`;
+  const parrafoMaquina = divEl.querySelector(".parrafo-maquina")!;
+  parrafoMaquina.textContent = `Maquina: ${
+    JSON.parse(newCurrentState).scores.computerScore
+  }`;
+
+  // Suponiendo que tienes una variable que indica si el jugador ganó o perdió
+  let juegoGanado;
+
+  if (
+    JSON.parse(newCurrentState).scores.computerScore >
+    JSON.parse(newCurrentState).scores.myScore
+  ) {
+    juegoGanado = false;
+  } else {
+    juegoGanado = true;
+  }
+
+  const mostrarDivGanaste: HTMLDivElement = divEl.querySelector(".ganaste")!;
+  const mostrarDivPerdiste: HTMLDivElement = divEl.querySelector(".perdiste")!;
+
+  if (juegoGanado) {
+    mostrarDivGanaste!.style.display = "flex"; // Muestra el div de ganaste
+    mostrarDivPerdiste!.style.display = "none"; // Oculta el div de perdido
+  } else {
+    mostrarDivGanaste!.style.display = "none"; // Oculta el div de ganado
+    mostrarDivPerdiste!.style.display = "flex"; // Muestra el div de perdido
+  }
 
   return divEl;
 }
