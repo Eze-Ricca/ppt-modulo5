@@ -1,4 +1,4 @@
-var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[e]=r;var v=(t,e,r)=>(j(t,typeof e!="symbol"?e+"":e,r),r);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const n of o)if(n.type==="childList")for(const s of n.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function r(o){const n={};return o.integrity&&(n.integrity=o.integrity),o.referrerPolicy&&(n.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?n.credentials="include":o.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function i(o){if(o.ep)return;o.ep=!0;const n=r(o);fetch(o.href,n)}})();class b extends HTMLElement{static get style(){return`
+var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[e]=r;var h=(t,e,r)=>(j(t,typeof e!="symbol"?e+"":e,r),r);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const a of o)if(a.type==="childList")for(const s of a.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&i(s)}).observe(document,{childList:!0,subtree:!0});function r(o){const a={};return o.integrity&&(a.integrity=o.integrity),o.referrerPolicy&&(a.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?a.credentials="include":o.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function i(o){if(o.ep)return;o.ep=!0;const a=r(o);fetch(o.href,a)}})();class v extends HTMLElement{static get style(){return`
     .container {
         position: relative;
         width: 380px;
@@ -68,13 +68,13 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         background-color: black;
       }   
        `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){if(this.shadowRoot.innerHTML=`
-    <style>${b.style}</style>
+    <style>${v.style}</style>
     <div class="container">
       <div class="estrella"></div>
       <div class="estrella2"></div>
       <h3 class="estrella-text">Ganaste!</h3>
     </div>
-    `,this.hasAttribute("invertida")){const e=this.shadowRoot.querySelector(".estrella"),r=this.shadowRoot.querySelector(".estrella2"),i=this.shadowRoot.querySelector(".estrella-text");e.setAttribute("class","estrella estrella-invertida"),r.setAttribute("class","estrella2 estrella-invertida2"),i.textContent="Perdiste!"}}}customElements.define("estrella-el",b);class y extends HTMLElement{static get style(){return`
+    `,this.hasAttribute("invertida")){const e=this.shadowRoot.querySelector(".estrella"),r=this.shadowRoot.querySelector(".estrella2"),i=this.shadowRoot.querySelector(".estrella-text");e.setAttribute("class","estrella estrella-invertida"),r.setAttribute("class","estrella2 estrella-invertida2"),i.textContent="Perdiste!"}}}customElements.define("estrella-el",v);class x extends HTMLElement{static get style(){return`
     button {
         font-family: var(--fuente-odibee);
         font-size: 3rem;
@@ -93,10 +93,10 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         border: solid 10px var(--color-button);
       }
     `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){const e=this.getAttribute("class");this.shadowRoot.innerHTML=`
-    <style>${y.style}</style>
+    <style>${x.style}</style>
     <button class="${e}"><slot></slot></button>
 
-    `}}customElements.define("button-el",y);class S extends HTMLElement{static get style(){return`
+    `}}customElements.define("button-el",x);class y extends HTMLElement{static get style(){return`
     .container {
         box-sizing: border-box;
         font-family: var(--fuente-odibee);
@@ -133,7 +133,7 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         letter-spacing: 0.5rem;
       }
     `}constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.shadowRoot.innerHTML=`
-    <style>${S.style}</style>
+    <style>${y.style}</style>
     <div class="container">
       <h3>Score</h3>
       <div class="container-p">
@@ -141,7 +141,7 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         <p class="p-maquina">Maquina: 3</p>
       </div>
     </div>
-    `}}customElements.define("score-el",S);class E extends HTMLElement{constructor(){super();v(this,"tags",["h1","p"]);v(this,"tag","p");this.attachShadow({mode:"open"}),this.tags.includes(this.getAttribute("tag"))&&(this.tag=this.getAttribute("tag")||this.tag),console.log(this.tag),this.render()}static get style(){return""}render(){const r=document.createElement(this.tag);r.textContent=this.textContent,this.shadowRoot.append(r)}}customElements.define("text-el",E);function k(t){const e=document.createElement("div");e.innerHTML=`
+    `}}customElements.define("score-el",y);class E extends HTMLElement{constructor(){super();h(this,"tags",["h1","p"]);h(this,"tag","p");this.attachShadow({mode:"open"}),this.tags.includes(this.getAttribute("tag"))&&(this.tag=this.getAttribute("tag")||this.tag),console.log(this.tag),this.render()}static get style(){return""}render(){const r=document.createElement(this.tag);r.textContent=this.textContent,this.shadowRoot.append(r)}}customElements.define("text-el",E);function P(t){const e=document.createElement("div");e.innerHTML=`
   <style>
   .contenedor{
     display: flex;
@@ -202,7 +202,7 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
   <img src="/ppt-modulo5/tijera.svg" alt="" />
 </div>
 </div>
-  `;const r=e.querySelector("button-el");return r==null||r.addEventListener("click",()=>{t.goTo("/instrucciones")}),e}const l={data:{currentGame:{myPlay:"",computerPlay:""},scores:{myScore:0,computerScore:0}},listeners:[],init(){const t=localStorage.getItem("saved-state");if(!t)this.setState(this.data);else{const e=JSON.parse(t);this.setState(e)}},getState(){return this.data},setState(t){this.data={...this.data,...t},this.listeners.forEach(e=>e()),localStorage.setItem("saved-state",JSON.stringify(this.data)),console.log("Soy el state, he cambiado",this.data)},subscribe(t){this.listeners.push(t)},setComputerMove(t){const e=this.getState();e.currentGame.computerPlay=t,this.setState(e)},setMove(t){const e=this.getState();e.currentGame.myPlay=t,this.setState(e)},whoWins(t,e){const n=[t==="tijera"&&e==="papel",t==="piedra"&&e==="tijera",t==="papel"&&e==="piedra"].includes(!0);return n?this.data.scores.myScore+=1:!n&&!(t===e)&&(this.data.scores.computerScore+=1),this.setState(this.data),this.data.scores},resetCurrentGame(){this.data.currentGame={myPlay:"",computerPlay:""},this.setState(this.data)}};function C(t){let e=document.createElement("div");e.innerHTML=`
+  `;const r=e.querySelector("button-el");return r==null||r.addEventListener("click",()=>{t.goTo("/instrucciones")}),e}const c={data:{currentGame:{myPlay:"",computerPlay:""},scores:{myScore:0,computerScore:0}},listeners:[],init(){const t=localStorage.getItem("saved-state");if(!t)this.setState(this.data);else{const e=JSON.parse(t);this.setState(e)}},getState(){return this.data},setState(t){this.data={...this.data,...t},this.listeners.forEach(e=>e()),localStorage.setItem("saved-state",JSON.stringify(this.data)),console.log("Soy el state, he cambiado",this.data)},subscribe(t){this.listeners.push(t)},setComputerMove(t){const e=this.getState();e.currentGame.computerPlay=t,this.setState(e)},setMove(t){const e=this.getState();e.currentGame.myPlay=t,this.setState(e)},whoWins(){const t=this.data.currentGame.myPlay,e=this.data.currentGame.computerPlay,a=[t==="tijera"&&e==="papel",t==="piedra"&&e==="tijera",t==="papel"&&e==="piedra"].includes(!0);return t===e||(a?this.data.scores.myScore+=1:this.data.scores.computerScore+=1),this.setState(this.data),this.data.scores},resetCurrentGame(){this.data.currentGame={myPlay:"",computerPlay:""},this.setState(this.data)}};function k(t){let e=document.createElement("div");e.innerHTML=`
   <style>
     .container {
       height: auto;
@@ -256,7 +256,7 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         <img src="/ppt-modulo5/tijera.svg" alt="" />
       </div>
   </div>
-  `;const r=e.querySelector("button-el");return l.data.scores.computerScore=0,l.data.scores.myScore=0,localStorage.removeItem("saved-state"),r==null||r.addEventListener("click",()=>{t.goTo("/elige")}),e}function T(t){const e=document.createElement("div");e.innerHTML=`
+  `;const r=e.querySelector("button-el");return c.data.scores.computerScore=0,c.data.scores.myScore=0,localStorage.removeItem("saved-state"),r==null||r.addEventListener("click",()=>{t.goTo("/elige")}),e}function T(t){const e=document.createElement("div");e.innerHTML=`
     <style>
       /* Estilos como los que tenías anteriormente */
       .principal {
@@ -414,7 +414,7 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
         <img class="imagen-jugador" src="/ppt-modulo5/papel.svg" alt="" />
       </div>
     </div>
-  `;const r=e.querySelector(".container-manos button img.piedra"),i=e.querySelector(".container-manos button img.papel"),o=e.querySelector(".container-manos button img.tijera"),n=e.querySelector(".principal"),s=e.querySelector(".secundario"),p=e.querySelector(".imagen-maquina"),f=e.querySelector(".imagen-jugador");l.subscribe(()=>{const a=l.getState(),d=e.querySelector(".my-score span"),h=e.querySelector(".computer-score span");d.textContent=a.scores.myScore.toString(),h.textContent=a.scores.computerScore.toString(),p.src=`/ppt-modulo5/${a.currentGame.computerPlay}.svg`,f.src=`/ppt-modulo5/${a.currentGame.myPlay}.svg`}),l.init();function c(a){e.querySelectorAll(".general").forEach(u=>{u.disabled=!0,u.style.pointerEvents="none"}),l.setMove(a);const h=g();l.setComputerMove(h),l.whoWins(a,h),setTimeout(()=>{l.resetCurrentGame();const u=l.getState();u.scores.computerScore==2||u.scores.myScore==2?t.goTo("/resultado"):t.goTo("/elige")},5e3)}r.addEventListener("click",()=>c("piedra")),i.addEventListener("click",()=>c("papel")),o.addEventListener("click",()=>c("tijera"));function g(){const a=["piedra","papel","tijera"];return a[Math.floor(Math.random()*a.length)]}function m(){const a=document.querySelector(".inner-box");let d=Number(a.innerText);d>-2&&(a.innerText=(d-1).toString()),d<=0&&(s.style.display="flex",n.style.display="none",clearInterval(w))}const w=setInterval(m,1e3);return e}function M(t){const e=document.createElement("div");e.innerHTML=`
+  `;const r=e.querySelector(".container-manos button img.piedra"),i=e.querySelector(".container-manos button img.papel"),o=e.querySelector(".container-manos button img.tijera"),a=e.querySelector(".principal"),s=e.querySelector(".secundario"),p=e.querySelector(".imagen-maquina"),g=e.querySelector(".imagen-jugador");c.subscribe(()=>{const n=c.getState(),l=e.querySelector(".my-score span"),b=e.querySelector(".computer-score span");l.textContent=n.scores.myScore.toString(),b.textContent=n.scores.computerScore.toString(),console.log("fin de suscribe")}),c.init();function d(n){c.setMove(n);const l=c.getState();console.log(l),p.src=`/ppt-modulo5/${l.currentGame.computerPlay}.svg`,g.src=`/ppt-modulo5/${l.currentGame.myPlay}.svg`,e.querySelectorAll(".general").forEach(S=>{S.disabled=!0,S.style.pointerEvents="none"})}function u(){const n=["piedra","papel","tijera"];return n[Math.floor(Math.random()*n.length)]}setTimeout(()=>{console.log("setTimOut");const n=c.getState(),l=u();c.setComputerMove(l),console.log("soy el timeOut",c),c.whoWins(),n.scores.computerScore==2||n.scores.myScore==2?t.goTo("/resultado"):t.goTo("/elige")},5e3),r.addEventListener("click",()=>d("piedra")),i.addEventListener("click",()=>d("papel")),o.addEventListener("click",()=>d("tijera"));function m(){const n=document.querySelector(".inner-box");let l=Number(n.innerText);console.log("setinterval"),l>-2&&(n.innerText=(l-1).toString()),l<=0&&(s.style.display="flex",a.style.display="none",clearInterval(w))}const w=setInterval(m,1e3);return e}function C(t){const e=document.createElement("div");e.innerHTML=`
   <style>.ganaste {
   /* display: none; */
   height: 100vh;
@@ -535,4 +535,4 @@ var q=Object.defineProperty;var j=(t,e,r)=>e in t?q(t,e,{enumerable:!0,configura
 
   
 </div>
-  `,e.querySelector("button-el").addEventListener("click",()=>{t.goTo("/home")}),e.querySelector(".volver-jugar").addEventListener("click",()=>{t.goTo("/home")});let o=localStorage.getItem("saved-state");const n=e.querySelector(".p-persona");n.textContent=`Vos: ${JSON.parse(o).scores.myScore}`;const s=e.querySelector(".p-maquina");s.textContent=`Maquina: ${JSON.parse(o).scores.computerScore}`;const p=e.querySelector(".parrafo-persona");p.textContent=`Vos: ${JSON.parse(o).scores.myScore}`;const f=e.querySelector(".parrafo-maquina");f.textContent=`Maquina: ${JSON.parse(o).scores.computerScore}`;let c;JSON.parse(o).scores.computerScore>JSON.parse(o).scores.myScore?c=!1:c=!0;const g=e.querySelector(".ganaste"),m=e.querySelector(".perdiste");return c?(g.style.display="flex",m.style.display="none"):(g.style.display="none",m.style.display="flex"),e}const P=[{path:/\/home/,component:k},{path:/\/instrucciones/,component:C},{path:/\/elige/,component:T},{path:/\/resultado/,component:M}];function x(){return location.host.includes("github.io")}function L(t){const e=x()?"/ppt-modulo5":"/";function r(o){const n=x()?e+o:o;history.pushState({},"",n),i(n)}function i(o){const n=x()?o.replace(e,""):o;o==="/"&&r("/home"),P.forEach(s=>{if(s.path.test(n)){const p=s.component({goTo:r});t.innerHTML="",t.appendChild(p)}})}location.pathname.replace(/\/$/,"")==e?r("/home"):i(location.pathname),window.addEventListener("popstate",()=>{i(location.pathname)})}(function(){let e=document.querySelector("#app");if(!e)throw new Error("Elemento #app no encontrado");L(e)})();
+  `,e.querySelector("button-el").addEventListener("click",()=>{t.goTo("/home")}),e.querySelector(".volver-jugar").addEventListener("click",()=>{t.goTo("/home")});let o=localStorage.getItem("saved-state");const a=e.querySelector(".p-persona");a.textContent=`Vos: ${JSON.parse(o).scores.myScore}`;const s=e.querySelector(".p-maquina");s.textContent=`Maquina: ${JSON.parse(o).scores.computerScore}`;const p=e.querySelector(".parrafo-persona");p.textContent=`Vos: ${JSON.parse(o).scores.myScore}`;const g=e.querySelector(".parrafo-maquina");g.textContent=`Maquina: ${JSON.parse(o).scores.computerScore}`;let d;JSON.parse(o).scores.computerScore>JSON.parse(o).scores.myScore?d=!1:d=!0;const u=e.querySelector(".ganaste"),m=e.querySelector(".perdiste");return d?(u.style.display="flex",m.style.display="none"):(u.style.display="none",m.style.display="flex"),e}const M=[{path:/\/home/,component:P},{path:/\/instrucciones/,component:k},{path:/\/elige/,component:T},{path:/\/resultado/,component:C}];function f(){return location.host.includes("github.io")}function L(t){const e=f()?"/ppt-modulo5":"/";function r(o){const a=f()?e+o:o;history.pushState({},"",a),i(a)}function i(o){const a=f()?o.replace(e,""):o;o==="/"&&r("/home"),M.forEach(s=>{if(s.path.test(a)){const p=s.component({goTo:r});t.innerHTML="",t.appendChild(p)}})}location.pathname.replace(/\/$/,"")==e?r("/home"):i(location.pathname),window.addEventListener("popstate",()=>{i(location.pathname)})}(function(){let e=document.querySelector("#app");if(!e)throw new Error("Elemento #app no encontrado");L(e)})();
