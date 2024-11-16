@@ -56,17 +56,22 @@ export const state = {
     this.setState(currentState);
   },
 
-  whoWins(myPlay: Jugada, computerPlay: Jugada) {
+  whoWins() {
+    const myPlay: Jugada = this.data.currentGame.myPlay;
+    const computerPlay: Jugada = this.data.currentGame.computerPlay;
     const ganeconTijera = myPlay === "tijera" && computerPlay === "papel";
     const ganeConPiedra = myPlay === "piedra" && computerPlay === "tijera";
     const ganeConPapel = myPlay === "papel" && computerPlay === "piedra";
+    // const perdiDeUna = myPlay === "";
 
     const gane = [ganeconTijera, ganeConPiedra, ganeConPapel].includes(true);
     const empate = myPlay === computerPlay;
-
-    if (gane) {
+    if (empate) {
+      // this.data.scores.myScore += 0;
+      // this.data.scores.computerScore += 0;
+    } else if (gane) {
       this.data.scores.myScore += 1;
-    } else if (!gane && !empate) {
+    } else {
       this.data.scores.computerScore += 1;
     }
 
