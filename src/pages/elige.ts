@@ -96,7 +96,18 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
         .tijera.active {
           transform: scale(1.2) translateY(-40px); /* Se agranda un 20% al hacer click */
         }
-      .secundario {
+        .general .piedra,
+        .general .papel,
+        .general .tijera {
+           transition: transform 0.3s ease-in-out;
+        }
+
+        .general.active .piedra,
+        .general.active .papel,
+        .general.active .tijera {
+          transform: scale(1.2) translateY(-40px); /* Se mantiene desplazada */
+          }
+        .secundario {
         width: 100%;
         height: 100vh;
         display: none;
@@ -138,13 +149,13 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
       </div>
       <h3 class="elige">Elige tu jugada antes de que se termina el tiempo!</h3>
       <div class="container-manos">
-        <button class="general">
+        <button class="general" data-choice="piedra">
           <img class="piedra" src="/ppt-modulo5/piedra.svg" alt="" />
         </button>
-        <button class="general">
+        <button class="general" >
           <img class="papel" src="/ppt-modulo5/papel.svg" alt="" />
         </button>
-        <button class="general">
+        <button class="general" >
           <img class="tijera" src="/ppt-modulo5/tijera.svg" alt="" />
         </button>
       </div>
@@ -181,58 +192,46 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
 
   const imagenJugador: HTMLImageElement =
     divEl.querySelector(".imagen-jugador")!;
-  // Suscríbete en el 'state' para actualizar el DOM cuando cambie
+
   state.subscribe(() => {
     const currentState = state.getState();
 
-    // Actualiza el puntaje en el DOM
     const myScoreEl = divEl.querySelector(".my-score span")!;
     const computerScoreEl = divEl.querySelector(".computer-score span")!;
-
     myScoreEl.textContent = currentState.scores.myScore.toString();
     computerScoreEl.textContent = currentState.scores.computerScore.toString();
-
-    // Muestra el movimiento de la computadora en pantalla
     console.log("fin de suscribe");
   });
 
-  // Carga el estado inicial de la partida
   state.init();
 
   function handleMoveSelection(jugada: Jugada) {
     state.setMove(jugada);
+    const computerMove = state.setComputerMove();
 
-    const currentState = state.getState();
-    console.log(currentState);
-    imagenPc.src = `/ppt-modulo5/${currentState.currentGame.computerPlay}.svg`;
-    imagenJugador.src = `/ppt-modulo5/${currentState.currentGame.myPlay}.svg`;
+    imagenPc.src = `/ppt-modulo5/${computerMove}.svg`;
+    imagenJugador.src = `/ppt-modulo5/${jugada}.svg`;
+    state.playGame(jugada);
 
-    // desabilito todos los botones despues de la jugada
     const botones = divEl.querySelectorAll(
       ".general"
     ) as NodeListOf<HTMLButtonElement>;
+
+    botones.forEach((boton) => boton.classList.remove("active")); // Quitamos "active" de todas
+    const botonSeleccionado = divEl.querySelector(`.general img.${jugada}`)
+      ?.parentElement!;
+    botonSeleccionado.classList.add("active");
+
     botones.forEach((boton) => {
       boton.disabled = true;
-      boton.style.pointerEvents = `none`; // Esto previene cualquier interaccion
+      boton.style.pointerEvents = `none`;
     });
   }
-  // Función para obtener una imagen aleatoria para la computadora que tambien voy a utilizar para darle el valor
-  // a la jugada de la compu
-  function getRandomImage() {
-    const imagenesCompu = ["piedra", "papel", "tijera"];
-    return imagenesCompu[
-      Math.floor(Math.random() * imagenesCompu.length)
-    ] as Jugada;
-  }
-  // Establece la jugada del usuario y la computadora
-  // Reinicia la pantalla después de 1 segundo para una nueva ronda
+
   setTimeout(() => {
-    console.log("setTimOut");
-    const currentState = state.getState(); // Obtener el estado actual
-    const computerMove = getRandomImage();
-    state.setComputerMove(computerMove);
-    console.log("soy el timeOut", state);
-    state.whoWins();
+    console.log("setTimeout ejecutado.");
+    const currentState = state.getState();
+
     if (
       currentState.scores.computerScore == 2 ||
       currentState.scores.myScore == 2
@@ -240,11 +239,11 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
       params.goTo("/resultado");
     } else {
       params.goTo("/elige");
-      // state.resetCurrentGame();
     }
   }, 5000);
 
   // Agrega manejadores a los botones
+
   botonPiedra.addEventListener("click", () => handleMoveSelection("piedra"));
   botonPapel.addEventListener("click", () => handleMoveSelection("papel"));
   botonTigera.addEventListener("click", () => handleMoveSelection("tijera"));
@@ -252,7 +251,7 @@ export function eligePage(params: { goTo: (arg: string) => void }) {
   function actualizarContador() {
     const contador: HTMLElement = document.querySelector(".inner-box")!;
     let valorActual = Number(contador!.innerText);
-    console.log("setinterval");
+    // console.log("setinterval");
     if (valorActual > -2) {
       contador.innerText = (valorActual - 1).toString();
     }

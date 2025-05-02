@@ -4,7 +4,7 @@ type Game = {
   myPlay: Jugada | "";
   computerPlay: Jugada | "";
 };
-
+const choices: Jugada[] = ["piedra", "papel", "tijera"];
 export const state = {
   data: {
     currentGame: {
@@ -20,13 +20,7 @@ export const state = {
   listeners: [] as Function[],
 
   init() {
-    const savedState = localStorage.getItem("saved-state");
-    if (!savedState) {
-      this.setState(this.data); // Inicializa con el estado por defecto
-    } else {
-      const localData = JSON.parse(savedState);
-      this.setState(localData);
-    }
+    this.setState(this.data);
   },
 
   getState() {
@@ -36,7 +30,6 @@ export const state = {
   setState(newData: Partial<typeof this.data>) {
     this.data = { ...this.data, ...newData };
     this.listeners.forEach((callback) => callback());
-    localStorage.setItem("saved-state", JSON.stringify(this.data));
     console.log("Soy el state, he cambiado", this.data);
   },
 
@@ -44,10 +37,14 @@ export const state = {
     this.listeners.push(callback);
   },
 
-  setComputerMove(move: Jugada) {
-    const currentState = this.getState();
-    currentState.currentGame.computerPlay = move;
-    this.setState(currentState);
+  setComputerMove() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    const computerMove = choices[randomIndex];
+
+    this.data.currentGame.computerPlay = computerMove;
+    this.setState(this.data);
+
+    return computerMove;
   },
 
   setMove(move: Jugada) {
@@ -56,27 +53,38 @@ export const state = {
     this.setState(currentState);
   },
 
-  whoWins() {
-    const myPlay: Jugada = this.data.currentGame.myPlay;
-    const computerPlay: Jugada = this.data.currentGame.computerPlay;
-    const ganeconTijera = myPlay === "tijera" && computerPlay === "papel";
-    const ganeConPiedra = myPlay === "piedra" && computerPlay === "tijera";
-    const ganeConPapel = myPlay === "papel" && computerPlay === "piedra";
-    // const perdiDeUna = myPlay === "";
+  // Funcion para determinar el ganador - funcion nueva
+  determineWinner(playerChoice: Jugada, computerChoice: Jugada) {
+    if (playerChoice === computerChoice) {
+      return "empate";
+    }
+    if (
+      (playerChoice === "piedra" && computerChoice === "tijera") ||
+      (playerChoice === "papel" && computerChoice === "piedra") ||
+      (playerChoice === "tijera" && computerChoice === "papel")
+    ) {
+      return "jugador";
+    }
+    return "computadora";
+  },
+  // Funcion principal del juego - Funcion nueva
+  playGame(playerChoice: Jugada) {
+    const computerChoice = this.data.currentGame.computerPlay; // Usa la jugada ya generada
 
-    const gane = [ganeconTijera, ganeConPiedra, ganeConPapel].includes(true);
-    const empate = myPlay === computerPlay;
-    if (empate) {
-      // this.data.scores.myScore += 0;
-      // this.data.scores.computerScore += 0;
-    } else if (gane) {
+    if (!computerChoice) {
+      console.warn("La jugada de la computadora no está definida.");
+      return;
+    }
+
+    const winner = this.determineWinner(playerChoice, computerChoice);
+
+    if (winner === "jugador") {
       this.data.scores.myScore += 1;
-    } else {
+    } else if (winner === "computadora") {
       this.data.scores.computerScore += 1;
     }
 
     this.setState(this.data);
-    return this.data.scores;
   },
 
   resetCurrentGame() {
@@ -85,5 +93,8 @@ export const state = {
       computerPlay: "",
     };
     this.setState(this.data);
+    // restablecer la seleccion visual de las manos
+    const botones = document.querySelectorAll(".general");
+    botones.forEach((boton) => boton.classList.remove("active"));
   },
 };

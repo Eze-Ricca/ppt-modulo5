@@ -1,3 +1,5 @@
+import { state } from "../state";
+
 export function resultadoPage(params: { goTo: (arg: string) => void }) {
   const divEl = document.createElement("div");
   divEl.innerHTML = /*HTML */ `
@@ -127,41 +129,30 @@ export function resultadoPage(params: { goTo: (arg: string) => void }) {
 
   volverAlInicio.addEventListener("click", () => {
     params.goTo("/home");
-    // localStorage.removeItem("saved-state");
   });
   const volverAlInicioDos = divEl.querySelector(".volver-jugar")!;
 
   volverAlInicioDos.addEventListener("click", () => {
     params.goTo("/home");
-    // localStorage.removeItem("saved-state");
   });
 
   // localStorage.removeItem("saved-state");
-  let newCurrentState = localStorage.getItem("saved-state")!;
+  let newCurrentState = state.getState();
   const pPersona = divEl.querySelector(".p-persona")!;
-  pPersona.textContent = `Vos: ${JSON.parse(newCurrentState).scores.myScore}`;
+  pPersona.textContent = `Vos: ${newCurrentState.scores.myScore}`;
 
   const pMaquina = divEl.querySelector(".p-maquina")!;
-  pMaquina.textContent = `Maquina: ${
-    JSON.parse(newCurrentState).scores.computerScore
-  }`;
+  pMaquina.textContent = `Maquina: ${newCurrentState.scores.computerScore}`;
 
   const parrafoPersona = divEl.querySelector(".parrafo-persona")!;
-  parrafoPersona.textContent = `Vos: ${
-    JSON.parse(newCurrentState).scores.myScore
-  }`;
+  parrafoPersona.textContent = `Vos: ${newCurrentState.scores.myScore}`;
   const parrafoMaquina = divEl.querySelector(".parrafo-maquina")!;
-  parrafoMaquina.textContent = `Maquina: ${
-    JSON.parse(newCurrentState).scores.computerScore
-  }`;
+  parrafoMaquina.textContent = `Maquina: ${newCurrentState.scores.computerScore}`;
 
   // Suponiendo que tienes una variable que indica si el jugador ganó o perdió
   let juegoGanado;
 
-  if (
-    JSON.parse(newCurrentState).scores.computerScore >
-    JSON.parse(newCurrentState).scores.myScore
-  ) {
+  if (newCurrentState.scores.computerScore > newCurrentState.scores.myScore) {
     juegoGanado = false;
   } else {
     juegoGanado = true;

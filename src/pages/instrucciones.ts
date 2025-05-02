@@ -62,7 +62,6 @@ export function instruccionesPage(params: { goTo: (arg: string) => void }) {
   state.data.scores.computerScore = 0;
   state.data.scores.myScore = 0;
 
-  localStorage.removeItem("saved-state");
   buttonEl?.addEventListener("click", () => {
     params.goTo("/elige");
   });
